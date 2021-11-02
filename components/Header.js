@@ -3,18 +3,20 @@ import Image from 'next/image';
 function Header() {
     return (
         <div>
-            <h1>HEADER</h1>
-            {/* left */}
-            <div>
+            <div className="flex justify-between bg-white max-w-6xl">
+                {/* left */}
+            <div className="relative hidden lg:inline-grid h-24 w-24">
                 <Image 
                     src='https://links.papareact.com/ocw'
                     layout='fill'
+                    objectFit='contain'
                 />
             </div>
 
             {/* middle */}
 
             {/* right */}
+            </div>
         </div>
     )
 }
