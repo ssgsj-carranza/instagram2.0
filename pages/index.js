@@ -17,3 +17,7 @@ export default function Home() {
     </div>
   );
 }
+
+
+
+// npm install @heroicons/react
