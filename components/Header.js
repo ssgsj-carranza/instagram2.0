@@ -41,10 +41,13 @@ function Header() {
                     <HomeIcon className="navBtn"/>
                     <MenuIcon className='h-6 md:hidden cursor-pointer'/>
                     <PaperAirplaneIcon className='navBtn' />
-                    {/* <PlusCircleIcon />
-                    <UserGroupIcon />
-                    <HeartIcon /> */}
-                    
+                    <PlusCircleIcon className='navBtn' />
+                    <UserGroupIcon className='navBtn' />
+                    <HeartIcon className='navBtn' />
+                    <img src='https://links.papareact.com/ocw' 
+                         alt='profile pic'
+                         className='h-10 rounded-full cursor-pointer'
+                    />
                 </div>
             </div>
         </div>
