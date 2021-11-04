@@ -4,7 +4,7 @@ import {HomeIcon} from '@heroicons/react/solid';
 
 function Header() {
     return (
-        <div>
+        <div className="shadow-sm border-b bg-white sticky top-0 z-50">
             <div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
                 
                 {/* left icon*/}
@@ -42,7 +42,7 @@ function Header() {
                     <MenuIcon className='h-6 md:hidden cursor-pointer'/>
                     <div className="relative navBtn">
                         <PaperAirplaneIcon className='navBtn hover:rotate-45' />
-                        <div className="absolute -top-2 -right-1 text-xs font-semibold w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
+                        <div className="absolute -top-2 -right-1 text-xs font-semibold w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse text-white">
                             6
                         </div>
                     </div>
