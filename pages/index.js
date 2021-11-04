@@ -4,7 +4,7 @@ import Feed from '../components/Feed';
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="bg-gray-50 h-screen overflow-y-scroll scrollbar-hide">
       <Head>
         <title>Instagram-2.0</title>
         <link rel="icon" href="/favicon.ico" />
@@ -25,3 +25,5 @@ export default function Home() {
 // npm install @heroicons/react
 // npm install @tailwindcss/forms
 // npm install faker
+// npm install --save-dev tailwind-scrollbar
+// npm install tailwind-scrollbar-hide
