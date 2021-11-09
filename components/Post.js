@@ -12,9 +12,14 @@ function Post({id, username, userImage, img, caption}) {
             </div>
 
             {/* img */}
-
+            <img src={img} alt="" className="object-cover w-full" />
 
             {/* buttons */}
+            <div>
+                <HeartIcon className='btn' />
+                <ChatIcon className='btn' />
+                <PaperAirplaneIcon className='btn' />
+            </div>
 
 
             {/* caption */}
