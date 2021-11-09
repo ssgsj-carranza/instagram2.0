@@ -18,10 +18,12 @@ function Feed() {
             
             {/* section right */}
             <section className="hidden xl:inline-grid md:col-span-1">
-                {/* profile */}
-                <MiniProfile />
-                {/* suggested friends */}
-                <Suggestions />
+                <div className='fixed top-20'>
+                    {/* profile */}
+                    <MiniProfile />
+                    {/* suggested friends */}
+                    <Suggestions />
+                </div>
             </section>
         </main>
     )
