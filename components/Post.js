@@ -3,11 +3,11 @@ import {HeartIcon as HeartIconFillled} from '@heroicons/react/solid';
 
 function Post({id, username, userImage, img, caption}) {
     return (
-        <div>
+        <div className="bg-white my-7 border rounded-sm">
             {/*header  */}
-            <div>
-                <img src="" alt="" />
-            <p>{username}</p>
+            <div className="flex items-center p-5">
+                <img src={userImage} alt="" className="rounded-full h-12 w-12 object-contain border p-1 mr-3" />
+            <p className="flex-1 font-bold">{username}</p>
             <DotsHorizontalIcon className="h-5" />
             </div>
 
