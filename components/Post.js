@@ -15,15 +15,21 @@ function Post({id, username, userImage, img, caption}) {
             <img src={img} alt="" className="object-cover w-full" />
 
             {/* buttons */}
-            <div>
-                <HeartIcon className='btn' />
-                <ChatIcon className='btn' />
-                <PaperAirplaneIcon className='btn' />
+            <div className="flex justify-between px-4 pt-4">
+                <div className='flex space-x-4'>
+                    <HeartIcon className='btn' />
+                    <ChatIcon className='btn' />
+                    <PaperAirplaneIcon className='btn' />
+                </div>
+                <BookmarkIcon className='btn' />
             </div>
 
 
             {/* caption */}
-
+            <p className='p-5 truncate'>
+                <span>{username} </span>
+                {caption}
+            </p>
 
             {/* comments */}
 
