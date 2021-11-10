@@ -28,3 +28,4 @@ export default function Home() {
 // npm install --save-dev tailwind-scrollbar
 // npm install tailwind-scrollbar-hide
 // npm install next-auth@beta
+// npm install firebase
