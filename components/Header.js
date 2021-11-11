@@ -1,8 +1,13 @@
 import Image from 'next/image';
 import {SearchIcon, PlusCircleIcon, UserGroupIcon, HeartIcon, PaperAirplaneIcon, MenuIcon} from '@heroicons/react/outline'
 import {HomeIcon} from '@heroicons/react/solid';
+import { useSession } from 'next-auth/react';
 
 function Header() {
+    //renaming session below
+    const {data: session} = useSession();
+    console.log(session);
+
     return (
         <div className="shadow-sm border-b bg-white sticky top-0 z-50">
             <div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
