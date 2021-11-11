@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import {SearchIcon, PlusCircleIcon, UserGroupIcon, HeartIcon, PaperAirplaneIcon, MenuIcon} from '@heroicons/react/outline'
 import {HomeIcon} from '@heroicons/react/solid';
-import { signIn, useSession } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 function Header() {
     //renaming session below
@@ -56,7 +56,8 @@ function Header() {
                     <PlusCircleIcon className='navBtn' />
                     <UserGroupIcon className='navBtn' />
                     <HeartIcon className='navBtn' />
-                    <img src={session?.user?.image} 
+                    <img onClick={signOut}
+                         src={session.user.image} 
                          alt='profile pic'
                          className='h-10 rounded-full cursor-pointer'
                     />
