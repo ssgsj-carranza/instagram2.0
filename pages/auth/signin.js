@@ -6,7 +6,7 @@ function signIn({providers}) {
             <>
                 {Object.values(providers).map((provider) => (
                     <div key={provider.name}>
-                        <button onClick={() => signIntoProvider(provider.id)}>Sign in with {provider.name}</button>
+                        <button onClick={() => SignIntoProvider(provider.id)}>Sign in with {provider.name}</button>
                     </div>
                 ))}
             </>        
