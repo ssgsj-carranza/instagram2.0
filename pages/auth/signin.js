@@ -16,7 +16,7 @@ function signIn({providers}) {
 
 //Server side render
 export async function getServerSideProps() {
-    const providers = getProviders();
+    const providers = await getProviders();
 
     return {
         props: {
