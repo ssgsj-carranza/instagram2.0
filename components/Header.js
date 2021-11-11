@@ -1,12 +1,11 @@
 import Image from 'next/image';
 import {SearchIcon, PlusCircleIcon, UserGroupIcon, HeartIcon, PaperAirplaneIcon, MenuIcon} from '@heroicons/react/outline'
 import {HomeIcon} from '@heroicons/react/solid';
-import { useSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 
 function Header() {
     //renaming session below
     const {data: session} = useSession();
-    console.log(session);
 
     return (
         <div className="shadow-sm border-b bg-white sticky top-0 z-50">
@@ -45,6 +44,9 @@ function Header() {
                 <div className="flex items-center justify-end space-x-4">
                     <HomeIcon className="navBtn"/>
                     <MenuIcon className='h-6 md:hidden cursor-pointer'/>
+
+                    {session ? (
+                    <>
                     <div className="relative navBtn">
                         <PaperAirplaneIcon className='navBtn hover:rotate-45' />
                         <div className="absolute -top-2 -right-1 text-xs font-semibold w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse text-white">
@@ -54,10 +56,14 @@ function Header() {
                     <PlusCircleIcon className='navBtn' />
                     <UserGroupIcon className='navBtn' />
                     <HeartIcon className='navBtn' />
-                    <img src='https://links.papareact.com/ocw' 
+                    <img src={session?.user?.image} 
                          alt='profile pic'
                          className='h-10 rounded-full cursor-pointer'
                     />
+                    </>
+                    ) : (
+                        <button onClick={signIn}>Sign In</button>
+                    )}
                 </div>
             </div>
         </div>
