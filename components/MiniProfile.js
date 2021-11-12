@@ -1,4 +1,8 @@
+import {signOut, useSession} from "next-auth/react";
+
 function MiniProfile() {
+    const {data: session} = useSession();
+
     return (
         <div className="flex items-center justify-between mt-14 ml-10">
             <img src="https://links.papareact.com/ocw" alt="" className='rounded-full border p-[2px] w-16 h-16' />

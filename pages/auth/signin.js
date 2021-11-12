@@ -11,7 +11,7 @@ function signIn({providers}) {
                     <div className="mt-40">
                             {Object.values(providers).map((provider) => (
                                 <div key={provider.name}>
-                                    <button className="p-3 bg-blue-500 rounded-lg text-white"
+                                    <button className="p-3 bg-blue-500 rounded-full hover:scale-110 transition transform duration-200 ease-out text-white"
                                             onClick={() => SignIntoProvider(provider.id, {callbackUrl: '/'})}
                                     >
                                         Sign in with {provider.name}
