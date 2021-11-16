@@ -29,3 +29,4 @@ export default function Home() {
 // npm install tailwind-scrollbar-hide
 // npm install next-auth@beta
 // npm install firebase
+// npm install recoil (state management library)
