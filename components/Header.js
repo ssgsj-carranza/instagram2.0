@@ -58,7 +58,7 @@ function Header() {
                             6
                         </div>
                     </div>
-                    <PlusCircleIcon className='navBtn' />
+                    <PlusCircleIcon onClick={() => setOpen(true)} className='navBtn' />
                     <UserGroupIcon className='navBtn' />
                     <HeartIcon className='navBtn' />
                     <img onClick={signOut}
