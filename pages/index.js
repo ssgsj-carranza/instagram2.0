@@ -32,3 +32,4 @@ export default function Home() {
 // npm install next-auth@beta
 // npm install firebase
 // npm install recoil (state management library)
+// npm install @headlessui/react
