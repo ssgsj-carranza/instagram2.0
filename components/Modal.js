@@ -2,6 +2,7 @@ import { useRecoilState } from "recoil"
 import { modalState } from "../atoms/modalAtom";
 import {Dialog, Transition} from "@headlessui/react";
 import { Fragment } from "react";
+import {CameraIcon} from '@heroicons/react/outline';
 
 function Modal() {
     const [open, setOpen] = useRecoilState(modalState);
@@ -42,6 +43,14 @@ function Modal() {
                         <div className='inline-block align-bottom bg-white rounded-xl px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6'>
                             <div>
                                 <div>
+                                    <div 
+                                         className='mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 cursor-pointer'
+                                    >
+                                        <CameraIcon 
+                                            className='h-6 w-6 text-red-600'
+                                            aria-hidden='true'
+                                        />
+                                    </div>
                                     <div className='mt-3 text-center sm:mt-5'>
                                         <Dialog.Title as='h3' className='text-lg leading-6 font-medium text-gray-900'>
                                             Upload Photo
@@ -49,11 +58,21 @@ function Modal() {
 
                                         <div>
                                             <input
-                                                ref=
+                                                type='file'
+                                                hidden
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <input
+                                                className='border-none focus:ring-0 w-full text-center'
+                                                type='text'
+                                                placeholder='Add caption...'
                                             />
                                         </div>
                                     </div>    
                                 </div>
+                                
                                 <div className='mt-5 sm:mt-6'>
                                     <button
                                         type='button'
