@@ -3,6 +3,9 @@ import { modalState } from "../atoms/modalAtom";
 import {Dialog, Transition} from "@headlessui/react";
 import { Fragment, useRef, useState } from "react";
 import {CameraIcon} from '@heroicons/react/outline';
+import {db, storage} from '../firebase';
+import {addDoc, collection, serverTimestamp} from '@firabase/firestore';
+import { useSession } from 'next-auth/react';
 
 function Modal() {
     const [open, setOpen] = useRecoilState(modalState);
@@ -10,9 +13,22 @@ function Modal() {
     const [selectedFile, setSelectedFile] = useState(null);
     const captionRef = useRef(null);
     const [loading, setLoading] = useState(false);
+    const {data: session} = useSession();
 
     const uploadPost = async () => {
-        
+        if(loading) return;
+        setLoading(true);
+
+        //create post and add to firestore "posts" collection
+        //get back post id
+        //upload image to firebase storage with post id
+        //get donwload url from firebase storage and update original post with image
+        const docRef = await addDoc(collection(db, 'posts'), {
+            username: session.user.username,
+            caption: captionRef.current.value,
+            profileImg: session.user.image,
+            timestamp: serverTimestamp(),
+        })
     };
 
     //initialize file reader, store it in variable, e.target.file[0] grabs file user selected, once browser reads file, 
