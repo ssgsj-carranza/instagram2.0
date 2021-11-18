@@ -9,8 +9,17 @@ function Modal() {
     const filePickerRef = useRef(null);
     const [selectedFile, setSelectedFile] = useState(null);
 
+    //initialize file reader, store it in variable, e.target.file[0] grabs file user selected, once browser reads file, 
+    //reader event is returned in a stateful way and it is store in state
     const addImageToPost = (e) => {
+        const reader = new FileReader();
+        if (e.target.files[0]) {
+            reader.readAsDataURL(e.target.files[0]);
+        }
 
+        reader.onload = (readerEvent) => {
+            setSelectedFile(readerEvent.target.result);
+        };
     };
 
     return (
