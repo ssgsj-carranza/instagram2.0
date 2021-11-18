@@ -8,6 +8,12 @@ function Modal() {
     const [open, setOpen] = useRecoilState(modalState);
     const filePickerRef = useRef(null);
     const [selectedFile, setSelectedFile] = useState(null);
+    const captionRef = useRef(null);
+    const [loading, setLoading] = useState(false);
+
+    const uploadPost = async () => {
+        
+    };
 
     //initialize file reader, store it in variable, e.target.file[0] grabs file user selected, once browser reads file, 
     //reader event is returned in a stateful way and it is store in state
@@ -92,6 +98,7 @@ function Modal() {
                                                 className='border-none focus:ring-0 w-full text-center'
                                                 type='text'
                                                 placeholder='Add caption...'
+                                                ref={captionRef}
                                             />
                                         </div>
                                     </div>    
