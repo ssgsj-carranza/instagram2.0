@@ -24,6 +24,7 @@ function Modal() {
         //get back post id
         //upload image to firebase storage with post id
         //get donwload url from firebase storage and update original post with image
+        
         const docRef = await addDoc(collection(db, 'posts'), {
             username: session.user.username,
             caption: captionRef.current.value,
