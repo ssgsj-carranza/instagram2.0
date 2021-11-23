@@ -13,19 +13,20 @@ function Posts() {
             setPosts(snapshot.docs);
         }), [db]);
         //never going to attach more than one listener
+        console.log(posts);
 
     return (
         <div>
-            {posts.map((post) => (
+            {/* {posts.map((post) => (
                 <Post 
                     key={post.id}
                     id={post.id}
-                    username={post.username}
-                    userImage={post.userImage}
-                    img={post.img}
-                    caption={post.caption}
+                    username={post.data().username}
+                    userImage={post.data().userImage}
+                    img={post.data().img}
+                    caption={post.data().caption}
                 />
-            ))}
+            ))} */}
         </div>
     );
 }
