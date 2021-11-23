@@ -1,9 +1,16 @@
 import {BookmarkIcon, ChatIcon, DotsHorizontalIcon, EmojiHappyIcon, HeartIcon, PaperAirplaneIcon} from '@heroicons/react/outline';
 import {HeartIcon as HeartIconFillled} from '@heroicons/react/solid';
 import { useSession } from 'next-auth/react';
+import { useState } from 'react';
 
 function Post({id, username, userImage, img, caption}) {
     const {data: session} = useSession();
+    const [comments, setComments] = useState([]);
+    const [comment, setComment] = useState('');
+
+    const sendComment = async (e) => {
+        e.preventDefault();
+    }
 
     return (
         <div className="bg-white my-7 border rounded-sm">
@@ -42,8 +49,19 @@ function Post({id, username, userImage, img, caption}) {
             {session && (
                 <form className='flex items-center p-4'>
                 <EmojiHappyIcon className='h-7' />
-                <input type="text" placeholder='Add a comment...' className='border-none flex-1 focus:ring-0 outline-none' />
-                <button className='font-semibold text-blue-400'>Post</button>
+                <input  type="text" 
+                        placeholder='Add a comment...' 
+                        className='border-none flex-1 focus:ring-0 outline-none' 
+                        value={comment}
+                        onChange={e => setComment(e.target.value)} 
+                />
+                <button type='submit' 
+                        disabled={!comment.trim()} 
+                        className='font-semibold text-blue-400'
+                        onClick={sendComment}
+                        >
+                            Post
+                </button>
             </form>
             )}
         </div>
