@@ -23,7 +23,6 @@ export default function Home() {
 }
 
 
-
 // npm install @heroicons/react
 // npm install @tailwindcss/forms
 // npm install faker
