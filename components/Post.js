@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import {addDoc, collection, serverTimestamp, onSnapshot, orderBy, query} from 'firebase/firestore';
 import { db } from '../firebase';
+import Moment from 'react-moment';
 
 function Post({id, username, userImage, img, caption}) {
     const {data: session} = useSession();
@@ -71,11 +72,17 @@ function Post({id, username, userImage, img, caption}) {
                 <div className='ml-10 h-20 overflow-y-scroll scrollbar-thumb-black scrollbar-thin'>
                     {comments.map((comment) => (
                         <div key={comment.id} className='flex items-center space-x-2 mb-3'>
-                            <img className='h-7 rounded-full' src={comment.data().userImage} alt=''/>
-                            <p>
+                            <img className='h-7 rounded-full' 
+                                 src={comment.data().userImage} 
+                                 alt=''
+                            />
+                            <p className='text-sm flex-1'>
                                 <span className='font-semibold'>{comment.data().username}</span>
                                 {' '}
                             {comment.data().comment}</p>
+                            <Moment fromNow>
+                                {comment.data().timestamp?.toDate()}
+                            </Moment>
                         </div>
                     ))}
                 </div>
