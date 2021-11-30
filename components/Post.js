@@ -1,14 +1,26 @@
 import {BookmarkIcon, ChatIcon, DotsHorizontalIcon, EmojiHappyIcon, HeartIcon, PaperAirplaneIcon} from '@heroicons/react/outline';
 import {HeartIcon as HeartIconFillled} from '@heroicons/react/solid';
 import { useSession } from 'next-auth/react';
-import { useState } from 'react';
-import {addDoc, collection, serverTimestamp} from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import {addDoc, collection, serverTimestamp, onSnapshot, orderBy, query} from 'firebase/firestore';
 import { db } from '../firebase';
 
 function Post({id, username, userImage, img, caption}) {
     const {data: session} = useSession();
     const [comments, setComments] = useState([]);
     const [comment, setComment] = useState('');
+
+    useEffect(() => 
+        onSnapshot(
+            query(
+                collection(db, 'posts', id, 'comments'), 
+                orderBy('timestamp', 'desc')
+            ), 
+                (snapshot) => 
+                    setComments(snapshot.docs)
+        ),
+        [db]
+    );
 
     const sendComment = async (e) => {
         e.preventDefault();
