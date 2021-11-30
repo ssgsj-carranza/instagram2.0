@@ -2,6 +2,8 @@ import {BookmarkIcon, ChatIcon, DotsHorizontalIcon, EmojiHappyIcon, HeartIcon, P
 import {HeartIcon as HeartIconFillled} from '@heroicons/react/solid';
 import { useSession } from 'next-auth/react';
 import { useState } from 'react';
+import {addDoc, collection, serverTimestamp} from 'firebase/firestore';
+import { db } from '../firebase';
 
 function Post({id, username, userImage, img, caption}) {
     const {data: session} = useSession();
@@ -10,7 +12,17 @@ function Post({id, username, userImage, img, caption}) {
 
     const sendComment = async (e) => {
         e.preventDefault();
-    }
+
+        const commentToSend = comment;
+        setComment('');
+
+        await addDoc(collection(db, 'posts', id, 'comments'), {
+            comment: commentToSend,
+            username: session.user.username,
+            userImage: session.user.image,
+            timestamp: serverTimestamp(),
+        });
+    };
 
     return (
         <div className="bg-white my-7 border rounded-sm">
