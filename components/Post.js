@@ -79,10 +79,12 @@ function Post({id, username, userImage, img, caption}) {
                                  alt=''
                             />
                             <p className='text-sm flex-1'>
-                                <span className='font-semibold'>{comment.data().username}</span>
+                                <span className='font-bold'>{comment.data().username}</span>
                                 {' '}
                             {comment.data().comment}</p>
-                            <ReactTimeago date={new Date(comment.data().timestamp?.toDate()).toUTCString()}>
+                            <ReactTimeago date={new Date(comment.data().timestamp?.toDate()).toUTCString()}
+                                          className='pr-5 text-xs'  
+                            >
                                 {comment.data().timestamp?.toDate()}
                             </ReactTimeago>
                         </div>
