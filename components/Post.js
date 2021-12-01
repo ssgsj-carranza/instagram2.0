@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import {addDoc, collection, serverTimestamp, onSnapshot, orderBy, query} from 'firebase/firestore';
 import { db } from '../firebase';
-import Moment from 'react-moment';
+// import Moment from 'moment/moment';
 
 function Post({id, username, userImage, img, caption}) {
     const {data: session} = useSession();
@@ -80,9 +80,9 @@ function Post({id, username, userImage, img, caption}) {
                                 <span className='font-semibold'>{comment.data().username}</span>
                                 {' '}
                             {comment.data().comment}</p>
-                            <Moment fromNow>
+                            {/* <Moment fromNow>
                                 {comment.data().timestamp?.toDate()}
-                            </Moment>
+                            </Moment> */}
                         </div>
                     ))}
                 </div>

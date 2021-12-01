@@ -32,4 +32,5 @@ export default function Home() {
 // npm install recoil (state management library)
 // npm install @headlessui/react
 // npm install firebase
-// npm install --save moment react-moment
+// npm install --save  react-moment (uninstalled for now)
+// npm install --save moment (uninstalled for now)
