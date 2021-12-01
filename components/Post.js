@@ -2,7 +2,7 @@ import {BookmarkIcon, ChatIcon, DotsHorizontalIcon, EmojiHappyIcon, HeartIcon, P
 import {HeartIcon as HeartIconFillled} from '@heroicons/react/solid';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-import {addDoc, collection, serverTimestamp, onSnapshot, orderBy, query, setDoc, doc} from 'firebase/firestore';
+import {addDoc, collection, serverTimestamp, onSnapshot, orderBy, query, setDoc, doc, deleteDoc} from 'firebase/firestore';
 import { db } from '../firebase';
 import ReactTimeago from 'react-timeago';
 import Posts from './Posts';
@@ -39,16 +39,20 @@ function Post({id, username, userImage, img, caption}) {
     //findIndex goes through every like and checks a certain condition such as does the like id match the users id
     useEffect(() =>
         setHasLiked(likes.findIndex(
-            (like) => like.id === session?.user?.uid !== -1)
-        )
-    , [likes]
+            (like) => (like.id === session?.user?.uid)) !== -1
+        ), [likes]
     );
 
     // uid ensures user cant like the same post more than once
     const likePost = async (e) => {
-        await setDoc(doc(db, 'posts', id, 'likes', session.user.uid), {
-            username: session.user.username,
-        });
+        if (hasLiked){
+            await deleteDoc(doc(db, 'posts', id, 'likes', session.user.uid));
+        } 
+        else {
+            await setDoc(doc(db, 'posts', id, 'likes', session.user.uid), {
+                username: session.user.username,
+            });
+        }
     };
 
     const sendComment = async (e) => {
