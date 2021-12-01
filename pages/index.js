@@ -34,3 +34,5 @@ export default function Home() {
 // npm install firebase
 // npm install --save  react-moment (uninstalled for now)
 // npm install --save moment (uninstalled for now)
+// npm install react-time-ago javascript-time-ago --save (uninstalled)
+// npm install react-timeago (trying this instead)

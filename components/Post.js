@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import {addDoc, collection, serverTimestamp, onSnapshot, orderBy, query} from 'firebase/firestore';
 import { db } from '../firebase';
 // import Moment from 'moment/moment';
+import ReactTimeago from 'react-timeago';
+
 
 function Post({id, username, userImage, img, caption}) {
     const {data: session} = useSession();
@@ -80,9 +82,9 @@ function Post({id, username, userImage, img, caption}) {
                                 <span className='font-semibold'>{comment.data().username}</span>
                                 {' '}
                             {comment.data().comment}</p>
-                            {/* <Moment fromNow>
+                            <ReactTimeago date={new Date(comment.data().timestamp?.toDate()).toUTCString()}>
                                 {comment.data().timestamp?.toDate()}
-                            </Moment> */}
+                            </ReactTimeago>
                         </div>
                     ))}
                 </div>
