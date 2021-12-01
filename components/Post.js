@@ -13,6 +13,7 @@ function Post({id, username, userImage, img, caption}) {
     const [comments, setComments] = useState([]);
     const [comment, setComment] = useState('');
     const [likes, setLikes] = useState([]);
+    const [hasLiked, setHasLiked] = useState(false);
 
     useEffect(() => 
         onSnapshot(
@@ -33,6 +34,14 @@ function Post({id, username, userImage, img, caption}) {
                 setLikes(snapshot.docs)
         ),
     [db, id]
+    );
+
+    //findIndex goes through every like and checks a certain condition such as does the like id match the users id
+    useEffect(() =>
+        setHasLiked(likes.findIndex(
+            (like) => like.id === session?.user?.uid !== -1)
+        )
+    , [likes]
     );
 
     // uid ensures user cant like the same post more than once
