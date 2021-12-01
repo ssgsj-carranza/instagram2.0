@@ -4,14 +4,15 @@ import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import {addDoc, collection, serverTimestamp, onSnapshot, orderBy, query} from 'firebase/firestore';
 import { db } from '../firebase';
-// import Moment from 'moment/moment';
 import ReactTimeago from 'react-timeago';
+import Posts from './Posts';
 
 
 function Post({id, username, userImage, img, caption}) {
     const {data: session} = useSession();
     const [comments, setComments] = useState([]);
     const [comment, setComment] = useState('');
+    const [likes, setLikes] = useState([]);
 
     useEffect(() => 
         onSnapshot(
@@ -22,7 +23,16 @@ function Post({id, username, userImage, img, caption}) {
                 (snapshot) => 
                     setComments(snapshot.docs)
         ),
-        [db]
+        [db, id]
+    );
+
+    useEffect(() =>
+        onSnapshot(
+            collection(db, 'posts', id, 'likes'), 
+            (snapshot) => 
+                setLikes(snapshot.docs)
+        ),
+    [db, id]
     );
 
     const sendComment = async (e) => {
