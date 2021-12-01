@@ -72,7 +72,7 @@ function Post({id, username, userImage, img, caption}) {
             {session && (
                 <div className="flex justify-between px-4 pt-4">
                 <div className='flex space-x-4'>
-                    <HeartIcon className='btn' />
+                    <HeartIcon onClick={likePost} className='btn' />
                     <ChatIcon className='btn' />
                     <PaperAirplaneIcon className='btn' />
                 </div>
