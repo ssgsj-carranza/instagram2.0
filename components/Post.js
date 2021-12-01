@@ -2,7 +2,7 @@ import {BookmarkIcon, ChatIcon, DotsHorizontalIcon, EmojiHappyIcon, HeartIcon, P
 import {HeartIcon as HeartIconFillled} from '@heroicons/react/solid';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-import {addDoc, collection, serverTimestamp, onSnapshot, orderBy, query} from 'firebase/firestore';
+import {addDoc, collection, serverTimestamp, onSnapshot, orderBy, query, setDoc, doc} from 'firebase/firestore';
 import { db } from '../firebase';
 import ReactTimeago from 'react-timeago';
 import Posts from './Posts';
@@ -34,6 +34,13 @@ function Post({id, username, userImage, img, caption}) {
         ),
     [db, id]
     );
+
+    // uid ensures user cant like the same post more than once
+    const likePost = async (e) => {
+        await setDoc(doc(db, 'posts', id, 'likes', session.user.uid), {
+            username: session.user.username,
+        });
+    };
 
     const sendComment = async (e) => {
         e.preventDefault();
